@@ -1,31 +1,14 @@
 import http from 'http'
-import { buffer } from 'stream/consumers'
 import Router from './router.mjs'
+import * as ctrl from './controller.mjs'
 
 export default function build({ isDev = true } = {}) {
   const router = new Router()
-
-  router.put('/', (request, response) => {
-    response.end('works')
-  })
-
-  router.del('/', (request, response) => {
-    console.log({ request })
-  })
-
-  router.get('/inventory', (request, response) => {
-    console.log({ request })
-    response.end('inventory')
-  })
-
-  router.get(
-    '/inventory/:id',
-    withMiddleware([])((request, response) => {
-      console.log({ request })
-      response.end(request.url)
-    })
-  )
-
+  router.put('/', ctrl.depositCoins)
+  router.del('/', ctrl.refundCoins)
+  router.get('/inventory', ctrl.getInventory)
+  router.get('/inventory/:id', ctrl.getItemFromInventory)
+  router.put('/inventory/:id', ctrl.dispenseItem)
   return http.createServer(async (request, response) => {
     await _body(request)
     await _querystring(request)
@@ -33,12 +16,24 @@ export default function build({ isDev = true } = {}) {
   })
 }
 
-async function _body(request) {
-  const buffers = []
-  for await (const chunk of req) {
-    buffers.push(chunk)
-  }
-  request.body = JSON.parse(Buffer.concat(buffers).toString())
+function _body(request) {
+  let data = []
+  request.on('data', (chunk) => {
+    data.push(chunk)
+  })
+
+  return new Promise((resolve, reject) => {
+    request.on('end', () => {
+      const results = Buffer.concat(data).toString()
+      if (results) {
+        request.body = JSON.parse(results)
+      } else {
+        request.body = {}
+      }
+      resolve()
+    })
+    request.on('error', (err) => reject(err))
+  })
 }
 async function _querystring(request) {
   const { searchParams } = new URL(

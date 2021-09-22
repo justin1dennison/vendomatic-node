@@ -65,6 +65,7 @@ class Route {
 
   async handle(request, response) {
     await this._params(request)
+
     return this.handler(request, response)
   }
 

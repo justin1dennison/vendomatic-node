@@ -1,10 +1,10 @@
 {
-  "name": "vendomatic",
-  "version": "1.0.0",
+  "name": "vendomatic-node",
+  "version": "0.1.0",
   "description": "",
   "main": "index.mjs",
   "scripts": {
-    "test": "NODE_ENV=testing ava test.js",
+    "test": "NODE_ENV=testing tape test.mjs | faucet",
     "dev": "NODE_ENV=development nodemon .",
     "format": "prettier --write ."
   },
@@ -21,10 +21,12 @@
   "homepage": "https://github.com/justin1dennison/vendomatic#readme",
   "devDependencies": {
     "@types/node": "^16.9.6",
-    "ava": "^3.15.0",
+    "faucet": "^0.0.1",
     "nodemon": "^2.0.12",
     "prettier": "^2.4.1",
-    "tap": "^15.0.9"
+    "supertest": "^6.1.6",
+    "tap": "^15.0.9",
+    "tape": "^5.3.1"
   },
   "module": true,
   "dependencies": {

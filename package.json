@@ -5,7 +5,7 @@
   "main": "index.mjs",
   "scripts": {
     "test": "NODE_ENV=testing ava test.js",
-    "dev": "NODE_ENV=development nodemon -w lib/**/*.js .",
+    "dev": "NODE_ENV=development nodemon .",
     "format": "prettier --write ."
   },
   "repository": {
@@ -26,6 +26,8 @@
     "prettier": "^2.4.1",
     "tap": "^15.0.9"
   },
-  "dependencies": {},
-  "module": true
+  "module": true,
+  "dependencies": {
+    "path-to-regexp": "^6.2.0"
+  }
 }

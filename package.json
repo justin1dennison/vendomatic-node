@@ -1,0 +1,31 @@
+{
+  "name": "vendomatic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "NODE_ENV=testing ava test.js",
+    "dev": "NODE_ENV=development nodemon -w lib/**/*.js .",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justin1dennison/vendomatic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justin1dennison/vendomatic/issues"
+  },
+  "homepage": "https://github.com/justin1dennison/vendomatic#readme",
+  "devDependencies": {
+    "@types/node": "^16.9.6",
+    "ava": "^3.15.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.1",
+    "tap": "^15.0.9"
+  },
+  "dependencies": {},
+  "module": true
+}

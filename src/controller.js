@@ -1,19 +1,5 @@
 const model = require('./model')
-
-const defaultHeaders = {
-  'Content-Type': 'application/json',
-}
-
-function sendJSON(data, status = 200, headers = {}) {
-  headers = { ...defaultHeaders, ...headers }
-  return (response) => {
-    Object.entries(headers).forEach(([key, val]) =>
-      response.setHeader(key, val)
-    )
-    response.statusCode = status
-    response.end(JSON.stringify(data))
-  }
-}
+const { sendJSON } = require('./helpers')
 
 module.exports = {
   depositCoins,

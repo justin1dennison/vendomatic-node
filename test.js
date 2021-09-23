@@ -1,7 +1,6 @@
 const build = require('./src/app')
 const supertest = require('supertest')
 const model = require('./src/model')
-const { PassThrough } = require('stream')
 
 let app = supertest(build())
 

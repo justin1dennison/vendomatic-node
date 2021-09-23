@@ -1,5 +1,5 @@
-import http from 'http'
-import app from './src/app.mjs'
+const http = require('http')
+const app = require('./src/app')
 
 const PORT = process.env.port || 5000
 const server = app()

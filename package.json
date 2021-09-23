@@ -2,7 +2,7 @@
   "name": "vendomatic-node",
   "version": "0.1.0",
   "description": "",
-  "main": "index.mjs",
+  "main": "src/index.js",
   "scripts": {
     "test": "NODE_ENV=testing jest",
     "test:watch": "npm run test -- --watch",

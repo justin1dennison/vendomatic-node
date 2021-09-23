@@ -1,6 +1,6 @@
 let _products = [5, 5, 5]
 let _coins = 0
-export default {
+module.exports = {
   async products() {
     return _products
   },

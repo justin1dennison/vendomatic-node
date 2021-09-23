@@ -1,8 +1,8 @@
-import http from 'http'
-import Router from './router.mjs'
-import * as ctrl from './controller.mjs'
+const http = require('http')
+const Router = require('./router')
+const ctrl = require('./controller')
 
-export default function build({ isDev = true } = {}) {
+module.exports = function build({ isDev = true } = {}) {
   const router = new Router()
   router.put('/', ctrl.depositCoins)
   router.del('/', ctrl.refundCoins)

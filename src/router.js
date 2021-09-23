@@ -1,5 +1,5 @@
-import { match } from 'path-to-regexp'
-import { URL } from 'url'
+const { match } = require('path-to-regexp')
+const { URL } = require('url')
 
 function defaultNotFound(request, response) {
   response.end('Not Found')
@@ -8,7 +8,7 @@ function defaultErrorHandler(error, request, response) {
   response.end('Error: ' + error.message)
 }
 
-export default class Router {
+module.exports = class Router {
   constructor({
     notFoundHandler = defaultNotFound,
     errorHandler = defaultErrorHandler,

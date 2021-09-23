@@ -1,4 +1,4 @@
-export const withMiddleware =
+const withMiddleware =
   (...fns) =>
   (handler) => {
     return (request, response) => {
@@ -8,3 +8,5 @@ export const withMiddleware =
       return handler(request, response)
     }
   }
+
+module.exports = { withMiddleware }
